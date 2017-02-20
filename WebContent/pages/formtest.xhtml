@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/template/mylayout.xhtml">
+    <ui:define name="content">
+
+        <h1>Test Form</h1>
+        <h:form id="formtest">
+            <h:panelGrid columns="2">
+
+				<h:outputText value="Input text&#160;:" />
+				<h:panelGroup>
+					<h:inputText id="text" value="#{formTest.text}" required="true"
+						requiredMessage="Le nom est obligatoire">
+						<f:validateLength minimum="3" maximum="15" />
+						<f:validator for="text" validatorId="myconstraints.Hello" />
+					</h:inputText>
+					<h:message errorClass="error" for="text" />
+				</h:panelGroup>
+
+				<h:commandButton value="Submit" action="#{formTest.submit}" />
+                <span></span>
+
+            </h:panelGrid>
+
+			<h:outputText value="Input date&#160;:" />
+			<h:panelGroup>
+				<h:inputText id="birthday" value="#{formTest.birthday}"
+					label="Birthday">
+					<f:convertDateTime pattern="dd-MM-yyyy" />
+				</h:inputText>
+				<h:message errorClass="error" for="birthday" />
+			</h:panelGroup>
+
+			<h:outputText value="Output date&#160;:" />
+			<h:outputText value="#{formTest.birthday}">
+				<f:convertDateTime pattern="dd-MM-yyyy" />
+			</h:outputText>
+
+			<h:outputText value="Input number&#160;:" />
+			<h:panelGroup>
+				<h:inputText id="number" value="#{formTest.number}" required="true">
+					<f:validateLongRange minimum="50" />
+					<f:convertNumber type="currency" currencySymbol="$"
+						minFractionDigits="2" maxFractionDigits="3" />
+				</h:inputText>
+				<h:message errorClass="error" for="number" />
+			</h:panelGroup>
+
+		</h:form>
+
+
+	</ui:define>
+</ui:composition>
+</html>

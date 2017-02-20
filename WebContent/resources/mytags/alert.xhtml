@@ -1,0 +1,28 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:composite="http://java.sun.com/jsf/composite"
+    xmlns:h="http://java.sun.com/jsf/html">
+
+<h:body>
+    <composite:interface>
+        <composite:attribute name="title" required="false" default="ALERT !" />
+    </composite:interface>
+
+    <composite:implementation>
+        <div
+            style="margin: 30px; width: 500px; border: solid 2px red;
+              background: #FFAAAA; color: red;">
+            <div style="padding: 3px; border-bottom: solid 2px red;">
+                <b><h:outputLabel value="#{cc.attrs.title}" /></b>
+            </div>
+            <div style="padding: 10px;">
+                <composite:insertChildren />
+            </div>
+        </div>
+    </composite:implementation>
+</h:body>
+</html>
+
